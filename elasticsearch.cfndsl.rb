@@ -99,6 +99,12 @@ CloudFormation do
     )
   end
 
+  Resource('ESServiceLinkRole') do
+    Type 'AWS::IAM::ServiceLinkedRole'
+    Property('AWSServiceName', 'es.amazonaws.com')
+    Property('Description','Role for ES to access resources in my VPC')
+  end
+
   Output("ESClusterEndpoint") do
     Value(FnGetAtt('ElasticSearchVPCCluster', 'DomainEndpoint'))
     Export FnSub("${EnvironmentName}-#{external_parameters[:component_name]}-ESClusterEndpoint")
