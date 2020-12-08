@@ -58,7 +58,7 @@ CloudFormation do
 
   Elasticsearch_Domain('ESServiceLinkRole') do
     DomainName Ref('ESDomainName')
-    DependsOn ['WebServerGroup']
+    DependsOn ['ESServiceLinkRole']
     AdvancedOptions advanced_options unless advanced_options.empty?
     Property(:DomainEndpointOptions, domain_endpoint_options) unless domain_endpoint_options.empty?
     EBSOptions ebs_options unless ebs_options.empty?
