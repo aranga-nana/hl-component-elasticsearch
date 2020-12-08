@@ -56,8 +56,9 @@ CloudFormation do
                 )
               )
 
-  Elasticsearch_Domain('ElasticSearchVPCCluster') do
+  Elasticsearch_Domain('ESServiceLinkRole') do
     DomainName Ref('ESDomainName')
+    DependsOn ['WebServerGroup']
     AdvancedOptions advanced_options unless advanced_options.empty?
     Property(:DomainEndpointOptions, domain_endpoint_options) unless domain_endpoint_options.empty?
     EBSOptions ebs_options unless ebs_options.empty?
