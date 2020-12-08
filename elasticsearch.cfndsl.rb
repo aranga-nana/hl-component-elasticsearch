@@ -56,7 +56,7 @@ CloudFormation do
                 )
               )
 
-  Elasticsearch_Domain('ESServiceLinkRole') do
+  Elasticsearch_Domain('ElasticSearchVPCCluster') do
     DomainName Ref('ESDomainName')
     DependsOn ['ESServiceLinkRole']
     AdvancedOptions advanced_options unless advanced_options.empty?
@@ -73,7 +73,6 @@ CloudFormation do
         Ref('AWS::NoValue')
       )
     })
-
     ElasticsearchVersion Ref('ElasticsearchVersion')
     EncryptionAtRestOptions({
       Enabled: Ref('EncryptionAtRest')
