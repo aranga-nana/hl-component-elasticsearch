@@ -73,6 +73,7 @@ CloudFormation do
         Ref('AWS::NoValue')
       )
     })
+
     ElasticsearchVersion Ref('ElasticsearchVersion')
     EncryptionAtRestOptions({
       Enabled: Ref('EncryptionAtRest')
