@@ -37,6 +37,9 @@ CloudFormation do
 
   advanced_options = external_parameters.fetch(:advanced_options, {})
   ebs_options = external_parameters.fetch(:ebs_options, {})
+  if ebs_options.key?('VolumeSize') 
+    ebs_options['VolumeSize'] = FnSub(ebs_options['VolumeSize'])
+  end
   domain_endpoint_options = external_parameters.fetch(:domain_endpoint_options, {})
 
   subnets = FnIf('Az2',
